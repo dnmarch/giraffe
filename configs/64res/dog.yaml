@@ -1,13 +1,18 @@
-method: gan2d
 data:
   path: /content/giraffe/data/Images/*.jpg
   fid_file: /content/giraffe/data/dog.npz
-  random_crop: True
-  use_tanh_range: True
 model:
-  generator: simple
-  discriminator: resnet
+  bounding_box_generator_kwargs:
+    scale_range_min: [0.21, 0.21, 0.21]
+    scale_range_max: [0.21, 0.21, 0.21]
+    translation_range_min: [0., 0., 0.]
+    translation_range_max: [0., 0., 0.]
+    rotation_range: [0.40278, 0.59722]
+  generator_kwargs:
+    range_v: [0.41667, 0.5]
+    fov: 10
 training:
   out_dir:  /content/giraffe/checkpoints
-  learning_rate: 0.0001
-  batch_size: 64
+  validate_every: 5000
+rendering:
+  render_program: ['object_rotation', 'interpolate_app', 'interpolate_shape']
