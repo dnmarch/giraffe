@@ -21,7 +21,7 @@ parser.add_argument('--no-cuda', action='store_true', help='Do not use cuda.')
 parser.add_argument('--exit-after', type=int, default=-1,
                     help='Checkpoint and exit after specified number of '
                          'seconds with exit code 2.')
-
+parser.add_argument('--model', type=str, default='', help='Path to config file.')
 args = parser.parse_args()
 cfg = config.load_config(args.config, 'configs/default.yaml')
 is_cuda = (torch.cuda.is_available() and not args.no_cuda)
@@ -58,6 +58,9 @@ train_loader = torch.utils.data.DataLoader(
 
 model = config.get_model(cfg, device=device, len_dataset=len(train_dataset))
 
+# add load old model
+if args.model:
+    model.load_state_dict(torch.load(args.model))
 
 # Initialize training
 op = optim.RMSprop if cfg['training']['optimizer'] == 'RMSprop' else optim.Adam
