@@ -2,14 +2,16 @@ data:
   path: /content/giraffe/data/Images/*.jpg
   fid_file: /content/giraffe/data/dog.npz
   random_crop: True
-  use_tanh_range: True
 model:
-  generator: simple
-  discriminator: resnet
+  bounding_box_generator_kwargs:
+    scale_range_min: [0.2, 0.16, 0.16]
+    scale_range_max: [0.25, 0.2, 0.2]
+    translation_range_min: [-0.22, -0.12, 0.]
+    translation_range_max: [0.22, 0.12, 0.]
+  generator_kwargs:
+    range_v: [0.41667, 0.5]
+    fov: 10
 training:
   out_dir:  /content/giraffe/checkpoints
-  validate_every: 5000
-  learning_rate: 0.0001
-  batch_size: 64
 rendering:
   render_program: ['object_rotation', 'interpolate_app', 'interpolate_shape']
