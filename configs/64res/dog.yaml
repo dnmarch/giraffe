@@ -9,5 +9,7 @@ model:
 training:
   out_dir:  /content/giraffe/checkpoints
   validate_every: 5000
+  learning_rate: 0.0001
+  batch_size: 64
 rendering:
   render_program: ['object_rotation', 'interpolate_app', 'interpolate_shape']
