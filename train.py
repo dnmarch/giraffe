@@ -60,6 +60,8 @@ model = config.get_model(cfg, device=device, len_dataset=len(train_dataset))
 
 # add load old model
 if args.model:
+    checkpoint_io = CheckpointIO(out_dir, model=model)
+    checkpoint_io.load(cfg['test']['model_file'])
     model.load_state_dict(torch.load(args.model))
 
 # Initialize training
