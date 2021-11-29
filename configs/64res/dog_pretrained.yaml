@@ -1,0 +1,5 @@
+inherit_from: /content/giraffe/configs/64res/dog.yaml
+training:
+  out_dir:  out/dog_pretrained
+test:
+  model_file: /content/giraffe/checkpoints/model.pt
