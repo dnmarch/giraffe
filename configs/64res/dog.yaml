@@ -14,4 +14,4 @@ model:
 training:
   out_dir:  /content/giraffe/checkpoints
 rendering:
-  render_program: ['object_rotation', 'interpolate_app', 'interpolate_shape']
+  render_program: ['object_rotation', 'interpolate_app', 'interpolate_shape', 'object_translation_vertical', 'object_translation_horizontal', 'interpolate_app_bg', 'object_translation_circle', 'render_camera_elevation', 'render_add_cars', 'render_add_clevr10']
