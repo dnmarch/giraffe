@@ -558,7 +558,7 @@ class Renderer(object):
                                    is_full_rotation=False, add_reverse=True)
 
 
-    def render_object_rotation(self, img_out_path, batch_size=15, n_steps=32):
+    def render_object_rotation2(self, img_out_path, batch_size=15, n_steps=32):
         gen = self.generator
         bbox_generator = gen.bounding_box_generator
 
